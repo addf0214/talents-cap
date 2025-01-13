@@ -5,37 +5,37 @@ annotate service.Companies with @(
         Data : [
             {
                 $Type : 'UI.DataField',
-                Label : 'name',
+                Label : '{i18n>Name2}',
                 Value : name,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'descr',
+                Label : '{i18n>Descr}',
                 Value : descr,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'phone',
+                Label : '{i18n>Phone}',
                 Value : phone,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'fax',
+                Label : '{i18n>Fax}',
                 Value : fax,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'homepage',
+                Label : '{i18n>Homepage}',
                 Value : homepage,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'address',
+                Label : '{i18n>Address}',
                 Value : address,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'note',
+                Label : '{i18n>Note}',
                 Value : note,
             },
         ],
@@ -44,12 +44,12 @@ annotate service.Companies with @(
         {
             $Type : 'UI.ReferenceFacet',
             ID : 'GeneratedFacet1',
-            Label : 'General Information',
+            Label : '{i18n>GeneralInformation}',
             Target : '@UI.FieldGroup#GeneratedGroup',
         },
         {
             $Type : 'UI.ReferenceFacet',
-            Label : 'Contacts',
+            Label : '{i18n>Contacts}',
             ID : 'Contacts',
             Target : 'contacts/@UI.LineItem#Contacts',
         },
@@ -57,30 +57,43 @@ annotate service.Companies with @(
     UI.LineItem : [
         {
             $Type : 'UI.DataField',
-            Label : 'name',
+            Label : '{i18n>Name1}',
             Value : name,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'descr',
+            Label : '{i18n>Descr}',
             Value : descr,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'phone',
+            Label : '{i18n>Phone}',
             Value : phone,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'fax',
+            Label : '{i18n>Fax}',
             Value : fax,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'homepage',
+            Label : '{i18n>Homepage}',
             Value : homepage,
         },
     ],
+    UI.HeaderInfo : {
+        Title : {
+            $Type : 'UI.DataField',
+            Value : name,
+        },
+        TypeName : '',
+        TypeNamePlural : '',
+    },
+    UI.FieldGroup #CommunicationRecords : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+        ],
+    },
 );
 
 annotate service.Employees with @(
@@ -88,13 +101,28 @@ annotate service.Employees with @(
         {
             $Type : 'UI.DataField',
             Value : name,
-            Label : 'name',
+            Label : '{i18n>Name3}',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : role,
+            Label : 'role',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : phone,
+            Label : 'phone',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : email,
+            Label : 'email',
         },
     ],
     UI.Facets : [
         {
             $Type : 'UI.ReferenceFacet',
-            Label : 'Information',
+            Label : '{i18n>Information}',
             ID : 'Information',
             Target : '@UI.FieldGroup#Information',
         },
@@ -105,34 +133,42 @@ annotate service.Employees with @(
             {
                 $Type : 'UI.DataField',
                 Value : name,
-                Label : 'name',
+                Label : '{i18n>Name4}',
             },
             {
                 $Type : 'UI.DataField',
                 Value : address,
-                Label : 'address',
+                Label : '{i18n>Address}',
             },
             {
                 $Type : 'UI.DataField',
                 Value : company.name,
-                Label : 'name',
+                Label : '{i18n>Name5}',
             },
             {
                 $Type : 'UI.DataField',
                 Value : email,
-                Label : 'email',
+                Label : '{i18n>Email}',
             },
             {
                 $Type : 'UI.DataField',
                 Value : phone,
-                Label : 'phone',
+                Label : '{i18n>Phone}',
             },
             {
                 $Type : 'UI.DataField',
                 Value : role,
-                Label : 'role',
+                Label : '{i18n>Role}',
             },
         ],
+    },
+    UI.HeaderInfo : {
+        Title : {
+            $Type : 'UI.DataField',
+            Value : name,
+        },
+        TypeName : '',
+        TypeNamePlural : '',
     },
 );
 

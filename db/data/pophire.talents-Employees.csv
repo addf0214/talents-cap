@@ -1,2 +1,3 @@
 ID,role,company_ID,name,email,phone,address,notes,createdAt,createdBy,modifiedAt,modifiedBy
 ddf78ffe-1fd9-4358-b187-50c2f312f259,HRD,eb8ed435-c6f8-4cb4-b306-aaf84fa934ec,张三,zhang.san@outlook.com,136000000,上海市,,,,,
+5c5278f3-2683-436d-bd20-aaa54a5d1667,,eb8ed435-c6f8-4cb4-b306-aaf84fa934ec,Adam,,,,,,,,
