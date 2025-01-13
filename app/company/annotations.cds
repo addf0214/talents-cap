@@ -15,6 +15,11 @@ annotate service.Companies with @(
             },
             {
                 $Type : 'UI.DataField',
+                Label : 'phone',
+                Value : phone,
+            },
+            {
+                $Type : 'UI.DataField',
                 Label : 'fax',
                 Value : fax,
             },
@@ -42,6 +47,12 @@ annotate service.Companies with @(
             Label : 'General Information',
             Target : '@UI.FieldGroup#GeneratedGroup',
         },
+        {
+            $Type : 'UI.ReferenceFacet',
+            Label : 'Contacts',
+            ID : 'Contacts',
+            Target : 'contacts/@UI.LineItem#Contacts',
+        },
     ],
     UI.LineItem : [
         {
@@ -56,6 +67,11 @@ annotate service.Companies with @(
         },
         {
             $Type : 'UI.DataField',
+            Label : 'phone',
+            Value : phone,
+        },
+        {
+            $Type : 'UI.DataField',
             Label : 'fax',
             Value : fax,
         },
@@ -64,19 +80,59 @@ annotate service.Companies with @(
             Label : 'homepage',
             Value : homepage,
         },
+    ],
+);
+
+annotate service.Employees with @(
+    UI.LineItem #Contacts : [
         {
             $Type : 'UI.DataField',
-            Label : 'address',
-            Value : address,
+            Value : name,
+            Label : 'name',
         },
     ],
-    UI.HeaderInfo : {
-        Title : {
-            $Type : 'UI.DataField',
-            Value : name,
+    UI.Facets : [
+        {
+            $Type : 'UI.ReferenceFacet',
+            Label : 'Information',
+            ID : 'Information',
+            Target : '@UI.FieldGroup#Information',
         },
-        TypeName : '',
-        TypeNamePlural : '',
+    ],
+    UI.FieldGroup #Information : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : name,
+                Label : 'name',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : address,
+                Label : 'address',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : company.name,
+                Label : 'name',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : email,
+                Label : 'email',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : phone,
+                Label : 'phone',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : role,
+                Label : 'role',
+            },
+        ],
     },
 );
 

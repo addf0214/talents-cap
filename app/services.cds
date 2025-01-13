@@ -1,2 +1,3 @@
 
-using from './companies/annotations';
+
+using from './company/annotations';
