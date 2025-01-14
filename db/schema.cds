@@ -18,11 +18,30 @@ entity Companies : cuid, managed {
 }
 
 entity Employees : cuid, managed {
-    name    : String;
-    email   : String;
-    phone   : String;
-    address : String;
-    notes   : String;
-    role    : String;
-    company : Association to Companies;
+    firstName : String;
+    lastName  : String;
+    email     : String;
+    phone     : String;
+    birthdate : Date;
+    address   : String;
+    notes     : String;
+    company   : Association to Companies;
+}
+
+entity WorkExperiences : cuid {
+    dateFrom : Date;
+    dateTo   : Date;
+    company  : Association to Companies;
+    position : String;
+    notes    : String;
+}
+
+entity CommunicationRecords : cuid, managed {
+    candidate : Association to Candidates;
+    content   : LargeString;
+}
+
+entity Candidates : Employees {
+    communicationRecords : Association to many CommunicationRecords
+                               on communicationRecords.candidate = $self;
 }

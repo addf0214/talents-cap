@@ -16,9 +16,11 @@
   "scripts": {
     "start": "cds-serve",
     "watch-companies": "cds watch --open companies/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-company": "cds watch --open company/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-company": "cds watch --open company/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-candidates": "cds watch --open candidates/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "sapux": [
-    "app/company"
+    "app/company",
+    "app/candidates"
   ]
 }
