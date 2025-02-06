@@ -1,7 +1,7 @@
 {
   "_version": "1.65.0",
   "sap.app": {
-    "id": "candidates",
+    "id": "joborders",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -13,7 +13,7 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
       "version": "1.15.7-pre-20241202181117-9bd1c621c.0",
-      "toolsId": "765b3783-2f69-4247-848f-3e9d5bcacc6f"
+      "toolsId": "280d5107-850f-4054-bb26-647dde250ab1"
     },
     "dataSources": {
       "mainService": {
@@ -60,7 +60,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "candidates.i18n.i18n"
+          "bundleName": "joborders.i18n.i18n"
         }
       },
       "": {
@@ -85,28 +85,33 @@
       "routes": [
         {
           "pattern": ":?query:",
-          "name": "CandidatesList",
-          "target": "CandidatesList"
+          "name": "JobOrdersList",
+          "target": "JobOrdersList"
         },
         {
-          "pattern": "Candidates({key}):?query:",
-          "name": "CandidatesObjectPage",
-          "target": "CandidatesObjectPage"
+          "pattern": "JobOrders({key}):?query:",
+          "name": "JobOrdersObjectPage",
+          "target": "JobOrdersObjectPage"
+        },
+        {
+          "pattern": "JobOrders({key})/Candidates({key2}):?query:",
+          "name": "JobApplicationsObjectPage",
+          "target": "JobApplicationsObjectPage"
         }
       ],
       "targets": {
-        "CandidatesList": {
+        "JobOrdersList": {
           "type": "Component",
-          "id": "CandidatesList",
+          "id": "JobOrdersList",
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
-              "contextPath": "/Candidates",
+              "contextPath": "/JobOrders",
               "variantManagement": "Page",
               "navigation": {
-                "Candidates": {
+                "JobOrders": {
                   "detail": {
-                    "route": "CandidatesObjectPage"
+                    "route": "JobOrdersObjectPage"
                   }
                 }
               },
@@ -121,22 +126,32 @@
             }
           }
         },
-        "CandidatesObjectPage": {
+        "JobOrdersObjectPage": {
           "type": "Component",
-          "id": "CandidatesObjectPage",
+          "id": "JobOrdersObjectPage",
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
-              "contextPath": "/Candidates",
-              "controlConfiguration": {
-                "communicationRecords/@com.sap.vocabularies.UI.v1.LineItem#Communications": {
-                  "columns": {
-                    "DataField::content": {
-                      "width": "100%"
-                    }
+              "editableHeaderContent": false,
+              "contextPath": "/JobOrders",
+              "navigation": {
+                "Candidates": {
+                  "detail": {
+                    "route": "JobApplicationsObjectPage"
                   }
                 }
               }
+            }
+          }
+        },
+        "JobApplicationsObjectPage": {
+          "type": "Component",
+          "id": "JobApplicationsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/JobOrders/Candidates"
             }
           }
         }

@@ -42,6 +42,25 @@ entity CommunicationRecords : cuid, managed {
 }
 
 entity Candidates : Employees {
-    communicationRecords : Association to many CommunicationRecords
+    communicationRecords : Composition of many CommunicationRecords
                                on communicationRecords.candidate = $self;
+}
+extend Employees with {
+    printName: String = concat (firstName,' ', lastName)
+}
+
+entity JobOrders : cuid, managed {
+    title       : String;
+    description : String;
+    company     : Association to one Companies;
+    Candidates  : Association to many JobApplications on Candidates.jobOrder = $self;
+    status      : String;
+    notes       : String;
+}
+
+entity JobApplications : cuid, managed {
+    candidate : Association to one Candidates;
+    jobOrder  : Association to one JobOrders;
+    status    : String;
+    notes     : String;
 }
