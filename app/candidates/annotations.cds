@@ -1,7 +1,6 @@
 using AdminService as service from '../../srv/admin-service';
 using from '../../db/schema';
 
-
 annotate service.Candidates with @(
     UI.FieldGroup #GeneratedGroup: {
         $Type: 'UI.FieldGroupType',
@@ -43,28 +42,25 @@ annotate service.Candidates with @(
             },
         ],
     },
-    UI.Facets                    : [{
-        $Type : 'UI.ReferenceFacet',
-        ID    : 'GeneratedFacet1',
-        Label : '{i18n>GeneralInformation}',
-        Target: '@UI.FieldGroup#GeneratedGroup',
-    },
+    UI.Facets                    : [
+        {
+            $Type : 'UI.ReferenceFacet',
+            ID    : 'GeneratedFacet1',
+            Label : '{i18n>GeneralInformation}',
+            Target: '@UI.FieldGroup#GeneratedGroup',
+        },
         {
             $Type : 'UI.ReferenceFacet',
             Label : '{i18n>Communications}',
-            ID : 'Communications',
-            Target : 'communicationRecords/@UI.LineItem#Communications',
-        }, ],
+            ID    : 'Communications',
+            Target: 'communicationRecords/@UI.LineItem#Communications',
+        },
+    ],
     UI.LineItem                  : [
         {
             $Type: 'UI.DataField',
-            Label: '{i18n>Firstname}',
-            Value: firstName,
-        },
-        {
-            $Type: 'UI.DataField',
-            Label: '{i18n>Lastname}',
-            Value: lastName,
+            Value: printName,
+            Label: 'printName',
         },
         {
             $Type: 'UI.DataField',
@@ -82,33 +78,30 @@ annotate service.Candidates with @(
             Value: birthdate,
         },
     ],
-    UI.DeleteHidden : true,
-    UI.HeaderInfo : {
-        TypeName : '',
-        TypeNamePlural : '',
-        Title : {
-            $Type : 'UI.DataField',
-            Value : printName,
+    UI.DeleteHidden              : true,
+    UI.HeaderInfo                : {
+        TypeName      : '',
+        TypeNamePlural: '',
+        Title         : {
+            $Type: 'UI.DataField',
+            Value: printName,
         },
     },
 );
 
-annotate service.CommunicationRecords with @(
-    UI.LineItem #Communications : [
-        {
-            $Type : 'UI.DataField',
-            Value : createdAt,
-            Label : '{i18n>CreatedAt}',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : content,
-            Label : '{i18n>Content}',
-        },
-    ]
-);
+annotate service.CommunicationRecords with @(UI.LineItem #Communications: [
+    {
+        $Type: 'UI.DataField',
+        Value: createdAt,
+        Label: '{i18n>CreatedAt}',
+    },
+    {
+        $Type: 'UI.DataField',
+        Value: content,
+        Label: '{i18n>Content}',
+    },
+]);
 
 annotate service.CommunicationRecords with {
-    content @UI.MultiLineText : true
+    content @UI.MultiLineText: true
 };
-

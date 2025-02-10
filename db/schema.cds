@@ -31,6 +31,7 @@ entity Employees : cuid, managed {
 entity WorkExperiences : cuid {
     dateFrom : Date;
     dateTo   : Date;
+    employee : Association to Candidates;
     company  : Association to Companies;
     position : String;
     notes    : String;
@@ -41,23 +42,34 @@ entity CommunicationRecords : cuid, managed {
     content   : LargeString;
 }
 
+@odata.draft.enabled
+@odata.draft.bypass
 entity Candidates : Employees {
+    workExperiences      : Composition of many WorkExperiences
+                               on workExperiences.employee = $self;
     communicationRecords : Composition of many CommunicationRecords
                                on communicationRecords.candidate = $self;
 }
+
 extend Employees with {
-    printName: String = concat (firstName,' ', lastName)
+    printName : String = concat(
+        lastName, ' ', firstName
+    )
 }
 
+@odata.draft.enabled
+@odata.draft.bypass
 entity JobOrders : cuid, managed {
     title       : String;
     description : String;
     company     : Association to one Companies;
-    Candidates  : Association to many JobApplications on Candidates.jobOrder = $self;
+    candidates  : Composition of many JobApplications
+                      on candidates.jobOrder = $self;
     status      : String;
     notes       : String;
 }
 
+@odata.draft.bypass
 entity JobApplications : cuid, managed {
     candidate : Association to one Candidates;
     jobOrder  : Association to one JobOrders;

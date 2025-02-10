@@ -1,2 +1,2 @@
-ID,dateFrom,dateTo,company_ID,position,notes
-49b5316f-3840-4dbb-9d0a-0595d28c0dd1,2018-01-01,,eb8ed435-c6f8-4cb4-b306-aaf84fa934ec,项目经理,""
+ID,dateFrom,dateTo,employee_ID,company_ID,position,notes
+49b5316f-3840-4dbb-9d0a-0595d28c0dd1,2018-01-01,,ddf78ffe-1fd9-4358-b187-50c2f312f259,eb8ed435-c6f8-4cb4-b306-aaf84fa934ec,项目经理,""
